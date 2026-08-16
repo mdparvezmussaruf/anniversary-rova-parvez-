@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -568,6 +568,36 @@ footer{
         padding:35px 25px;
     }
 }
+
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:15px;
+    flex-wrap:wrap;
+}
+
+.memory-btn{
+    padding:16px 30px;
+    border-radius:50px;
+    border:1px solid rgba(255,255,255,.3);
+    background:rgba(150,150,255,.08);
+    color:#fff;
+    backdrop-filter:blur(15px);
+    cursor:pointer;
+    letter-spacing:3px;
+    font-size:11px;
+    transition:.4s;
+}
+
+.memory-btn:hover{
+    background:rgba(255,255,255,.9);
+    color:#07091b;
+    box-shadow:
+        0 0 20px rgba(255,255,255,.5),
+        0 0 60px rgba(130,130,255,.35);
+    transform:translateY(-4px);
+}
 </style>
 </head>
 
@@ -610,8 +640,11 @@ footer{
                 onclick="document.getElementById('memories').scrollIntoView()">
             ENTER THE NIGHT ✦
         </button>
-
+<button class="memory-btn" onclick="window.location.href='memories.html'">
+        ♡ OUR MEMORIES
+    </button>
     </div>
+
 </header>
 
 
@@ -665,7 +698,7 @@ footer{
         <!-- Replace the image URLs -->
 
         <div class="memory"
-             style="--image:url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80')">
+             style="--image:url('u/W.jpeg')">
 
             <div class="memory-text">
                 <h3>The Beginning</h3>
@@ -676,18 +709,18 @@ footer{
 
 
         <div class="memory"
-             style="--image:url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=900&q=80')">
+             style="--image:url('u/moments-memory.jpg')">
 
             <div class="memory-text">
                 <h3>The Moments</h3>
-                <p>The ordinary days that became special.</p>
+                <p>The rainy days that became special.</p>
             </div>
 
         </div>
 
 
         <div class="memory"
-             style="--image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80')">
+             style="--image:url('u/Wh.jpeg')">
 
             <div class="memory-text">
                 <h3>Our Universe</h3>
@@ -716,10 +749,26 @@ footer{
 
             <div class="timeline-card">
                 <small>CHAPTER 01</small>
-                <h3>The First Moment</h3>
+                <h3>The Day We First Meet</h3>
                 <p>
-                    Write something special about the first time
-                    you met or the beginning of your relationship.
+                   It was just an ordinary day...
+until suddenly, the rain came.
+
+I still remember that moment —
+the tiny drops of rain falling on your face,
+resting on your glasses,
+and somehow making everything around you
+feel a little more beautiful.
+
+Maybe it was just a rainy day for everyone else.
+
+But for me,
+it became one of those moments
+I knew I would never forget.
+
+That was the day
+a beautiful memory quietly became
+a part of our story.
                 </p>
             </div>
 
@@ -730,10 +779,36 @@ footer{
 
             <div class="timeline-card">
                 <small>CHAPTER 02</small>
-                <h3>The First Memory</h3>
+                <h3>The First Date</h3>
                 <p>
-                    Add one of your favorite memories here.
-                    It could be a conversation, trip, joke or special day.
+I still remember you that day.
+You looked so beautiful —
+the kind of beautiful I know
+I will remember forever.
+
+But that day wasn't just a date for me.
+It felt like a gift.
+
+The first time I held your hand,
+everything around me seemed to disappear.
+And when you came into my arms
+on that boat...
+
+for a moment,
+my mind became quiet,
+and my heart finally felt at peace.
+
+Just you.
+Just me.
+The water around us.
+And a moment I wish I could live
+one more time.
+
+That wasn't simply our first date.
+
+That was one of the most beautiful gifts
+life ever gave me. 🤍
+
                 </p>
             </div>
 
@@ -744,10 +819,33 @@ footer{
 
             <div class="timeline-card">
                 <small>CHAPTER 03</small>
-                <h3>Today</h3>
+                <h3>Today, Tomorrow & Forever</h3>
                 <p>
-                    Another chapter has been written.
-                    And there are still many more pages waiting.
+Today, I don't feel the need for anything else.
+
+I just want you.
+
+In my heart, there is a place
+that belongs only to you —
+a place no one else could ever replace.
+
+You are not just a beautiful chapter
+in my story.
+
+You are the person
+I want beside me for all the chapters
+that are still waiting to be written.
+
+My favorite person.
+My forever home.
+My wife, forever in my heart.
+
+No matter how much time passes,
+that place will always be yours.
+
+Until my very last breath,
+I will carry this love with me. 🤍
+
                 </p>
             </div>
 
@@ -774,7 +872,7 @@ footer{
             <div class="envelope-icon">✉</div>
 
             <p style="color:#aaaec7;margin-bottom:25px;">
-                There is something hidden here for you.
+                There is something here for you.
             </p>
 
             <button class="reveal" onclick="openLetter()">
@@ -784,7 +882,7 @@ footer{
             <div class="letter" id="letter">
 
                 <p>
-                    Hey you,
+                    My Sweet Bubu,
                 </p>
 
                 <br>
@@ -870,7 +968,7 @@ footer{
    CHANGE YOUR RELATIONSHIP START DATE
 ========================================= */
 
-const relationshipStart = new Date("2024-04-27T00:00:00");
+const relationshipStart = new Date("2025-08-14T00:00:00");
 
 
 /* =========================================
@@ -1041,4 +1139,4 @@ document.addEventListener("mousemove",(e)=>{
 
 </body>
 </html>
-```
+

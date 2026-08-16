@@ -1,0 +1,1044 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Little Universe ✨</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap');
+
+:root{
+    --night:#050817;
+    --deep:#090d27;
+    --purple:#7777ff;
+    --lavender:#c9c7ff;
+    --white:#ffffff;
+    --soft:#dcdcff;
+    --gold:#f5df9c;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    background:
+        radial-gradient(circle at 50% 0%, #1b1b52 0%, transparent 35%),
+        linear-gradient(180deg,#030510,#080b22 45%,#050714);
+    color:white;
+    font-family:'Montserrat',sans-serif;
+    overflow-x:hidden;
+}
+
+/* =========================
+   LOADING SCREEN
+========================= */
+
+.loader{
+    position:fixed;
+    inset:0;
+    background:#030510;
+    z-index:9999;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    transition:opacity 1s, visibility 1s;
+}
+
+.loader.hidden{
+    opacity:0;
+    visibility:hidden;
+}
+
+.loader .angel{
+    font-size:65px;
+    animation:float 2s ease-in-out infinite;
+}
+
+.loader p{
+    margin-top:20px;
+    color:#cfcfff;
+    letter-spacing:4px;
+    font-size:11px;
+}
+
+/* =========================
+   STARS
+========================= */
+
+.stars,
+.stars::before,
+.stars::after{
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    z-index:0;
+}
+
+.stars{
+    background-image:
+        radial-gradient(2px 2px at 20% 30%,white,transparent),
+        radial-gradient(1px 1px at 40% 70%,white,transparent),
+        radial-gradient(2px 2px at 70% 20%,white,transparent),
+        radial-gradient(1px 1px at 80% 80%,white,transparent),
+        radial-gradient(2px 2px at 10% 90%,white,transparent),
+        radial-gradient(1px 1px at 55% 45%,white,transparent);
+    animation:twinkle 5s infinite alternate;
+}
+
+@keyframes twinkle{
+    from{opacity:.45}
+    to{opacity:1}
+}
+
+/* =========================
+   FLOATING PARTICLES
+========================= */
+
+.particle{
+    position:fixed;
+    width:4px;
+    height:4px;
+    background:#fff;
+    border-radius:50%;
+    box-shadow:0 0 15px #fff;
+    pointer-events:none;
+    animation:rise linear forwards;
+    z-index:2;
+}
+
+@keyframes rise{
+    from{
+        transform:translateY(0) scale(.5);
+        opacity:0;
+    }
+    15%{opacity:1}
+    to{
+        transform:translateY(-110vh) scale(1.5);
+        opacity:0;
+    }
+}
+
+/* =========================
+   HERO
+========================= */
+
+.hero{
+    min-height:100vh;
+    position:relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    overflow:hidden;
+    z-index:3;
+}
+
+.moon{
+    position:absolute;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:#fffdf0;
+    right:13%;
+    top:10%;
+    box-shadow:
+        0 0 30px #fff,
+        0 0 80px rgba(220,220,255,.7),
+        0 0 160px rgba(130,130,255,.35);
+}
+
+.moon::after{
+    content:"";
+    position:absolute;
+    width:220px;
+    height:220px;
+    border-radius:50%;
+    background:#080b22;
+    left:-45px;
+    top:-20px;
+}
+
+.cloud{
+    position:absolute;
+    width:400px;
+    height:100px;
+    background:rgba(255,255,255,.05);
+    border-radius:100px;
+    filter:blur(10px);
+    bottom:10%;
+    left:-80px;
+}
+
+.cloud.two{
+    left:auto;
+    right:-100px;
+    bottom:25%;
+    transform:scale(.7);
+}
+
+.hero-content{
+    position:relative;
+    z-index:5;
+    max-width:900px;
+    padding:30px;
+}
+
+.eyebrow{
+    color:#d7d7ff;
+    letter-spacing:8px;
+    text-transform:uppercase;
+    font-size:11px;
+    margin-bottom:25px;
+}
+
+.hero h1{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(65px,12vw,150px);
+    line-height:.8;
+    font-weight:500;
+    text-shadow:
+        0 0 20px rgba(255,255,255,.3),
+        0 0 60px rgba(130,130,255,.35);
+}
+
+.hero h1 span{
+    display:block;
+    color:#cfcfff;
+}
+
+.hero-sub{
+    margin:40px auto;
+    max-width:600px;
+    color:#c3c4dd;
+    line-height:1.9;
+    font-size:14px;
+}
+
+.start-btn{
+    border:1px solid rgba(255,255,255,.4);
+    color:white;
+    background:rgba(255,255,255,.06);
+    backdrop-filter:blur(15px);
+    padding:16px 30px;
+    border-radius:50px;
+    cursor:pointer;
+    letter-spacing:3px;
+    transition:.4s;
+}
+
+.start-btn:hover{
+    background:white;
+    color:#07091b;
+    box-shadow:0 0 40px rgba(255,255,255,.4);
+}
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+    position:relative;
+    z-index:4;
+    padding:120px 8%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title small{
+    letter-spacing:5px;
+    color:#9292d9;
+    font-size:10px;
+}
+
+.section-title h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:60px;
+    font-weight:500;
+    margin-top:15px;
+}
+
+/* =========================
+   COUNTER
+========================= */
+
+.counter-section{
+    text-align:center;
+}
+
+.counter{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.counter-box{
+    min-width:130px;
+    padding:25px 15px;
+    border:1px solid rgba(255,255,255,.12);
+    background:rgba(255,255,255,.035);
+    backdrop-filter:blur(15px);
+    border-radius:20px;
+}
+
+.counter-box strong{
+    display:block;
+    font-family:'Cormorant Garamond',serif;
+    font-size:45px;
+    color:#eeeefe;
+}
+
+.counter-box span{
+    color:#999abd;
+    font-size:10px;
+    letter-spacing:3px;
+}
+
+/* =========================
+   MEMORY CARDS
+========================= */
+
+.memories{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:25px;
+    max-width:1100px;
+    margin:auto;
+}
+
+.memory{
+    min-height:350px;
+    border-radius:25px;
+    overflow:hidden;
+    position:relative;
+    border:1px solid rgba(255,255,255,.12);
+    background:
+        linear-gradient(180deg,transparent 35%,rgba(3,5,16,.95)),
+        var(--image);
+    background-size:cover;
+    background-position:center;
+    transition:.5s;
+}
+
+.memory:hover{
+    transform:translateY(-12px) scale(1.02);
+    box-shadow:0 20px 60px rgba(0,0,0,.5);
+}
+
+.memory-text{
+    position:absolute;
+    bottom:0;
+    padding:30px;
+}
+
+.memory-text h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:32px;
+}
+
+.memory-text p{
+    color:#bfc0d3;
+    font-size:12px;
+    margin-top:8px;
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+.timeline{
+    max-width:850px;
+    margin:auto;
+    position:relative;
+}
+
+.timeline::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    transform:translateX(-50%);
+    width:1px;
+    height:100%;
+    background:linear-gradient(transparent,#7d7dd0,transparent);
+}
+
+.timeline-item{
+    width:50%;
+    padding:25px;
+    position:relative;
+}
+
+.timeline-item:nth-child(even){
+    margin-left:50%;
+}
+
+.timeline-card{
+    padding:30px;
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:20px;
+    backdrop-filter:blur(15px);
+}
+
+.timeline-card small{
+    color:#a3a3e9;
+    letter-spacing:3px;
+}
+
+.timeline-card h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:30px;
+    margin:10px 0;
+}
+
+.timeline-card p{
+    color:#aaaec7;
+    font-size:13px;
+    line-height:1.8;
+}
+
+/* =========================
+   LETTER
+========================= */
+
+.letter-container{
+    max-width:800px;
+    margin:auto;
+}
+
+.envelope{
+    padding:60px;
+    background:
+        linear-gradient(135deg,rgba(255,255,255,.1),rgba(255,255,255,.025));
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:30px;
+    text-align:center;
+    box-shadow:0 30px 100px rgba(0,0,0,.3);
+}
+
+.envelope-icon{
+    font-size:45px;
+    margin-bottom:25px;
+}
+
+.letter{
+    display:none;
+    margin-top:30px;
+    text-align:left;
+    color:#d0d1e2;
+    line-height:2;
+    font-family:'Cormorant Garamond',serif;
+    font-size:21px;
+}
+
+.letter.show{
+    display:block;
+    animation:fadeUp 1s;
+}
+
+.reveal{
+    background:#fff;
+    border:0;
+    color:#08091c;
+    padding:14px 25px;
+    border-radius:30px;
+    cursor:pointer;
+    font-weight:600;
+}
+
+/* =========================
+   FINAL
+========================= */
+
+.final{
+    min-height:80vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+}
+
+.final-content{
+    max-width:700px;
+}
+
+.wings{
+    font-size:70px;
+    filter:drop-shadow(0 0 25px rgba(255,255,255,.5));
+    animation:float 3s ease-in-out infinite;
+}
+
+.final h2{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(50px,8vw,90px);
+    margin:25px 0;
+}
+
+.final p{
+    color:#aeb0c9;
+    line-height:2;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    text-align:center;
+    padding:50px;
+    color:#6d6f91;
+    font-size:10px;
+    letter-spacing:3px;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-15px)}
+}
+
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:800px){
+
+    .moon{
+        width:130px;
+        height:130px;
+        right:5%;
+    }
+
+    .moon::after{
+        width:130px;
+        height:130px;
+    }
+
+    section{
+        padding:90px 6%;
+    }
+
+    .section-title h2{
+        font-size:45px;
+    }
+
+    .memories{
+        grid-template-columns:1fr;
+    }
+
+    .timeline::before{
+        left:10px;
+    }
+
+    .timeline-item,
+    .timeline-item:nth-child(even){
+        width:100%;
+        margin-left:0;
+        padding-left:35px;
+    }
+
+    .envelope{
+        padding:35px 25px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="loader" id="loader">
+    <div class="angel">♕</div>
+    <p>ENTERING OUR LITTLE UNIVERSE</p>
+</div>
+
+<div class="stars"></div>
+
+<!-- ================= HERO ================= -->
+
+<header class="hero" id="home">
+
+    <div class="moon"></div>
+
+    <div class="cloud"></div>
+    <div class="cloud two"></div>
+
+    <div class="hero-content">
+
+        <div class="eyebrow">
+            A little universe made for two
+        </div>
+
+        <h1>
+            Our
+            <span>Story</span>
+        </h1>
+
+        <p class="hero-sub">
+            Some moments become memories.
+            Some memories become stories.
+            And somehow, our story became one of my favorite parts of life.
+        </p>
+
+        <button class="start-btn"
+                onclick="document.getElementById('memories').scrollIntoView()">
+            ENTER THE NIGHT ✦
+        </button>
+
+    </div>
+</header>
+
+
+<!-- ================= COUNTER ================= -->
+
+<section class="counter-section">
+
+    <div class="section-title">
+        <small>TIME TOGETHER</small>
+        <h2>Since The Beginning</h2>
+    </div>
+
+    <div class="counter">
+
+        <div class="counter-box">
+            <strong id="days">0</strong>
+            <span>DAYS</span>
+        </div>
+
+        <div class="counter-box">
+            <strong id="hours">0</strong>
+            <span>HOURS</span>
+        </div>
+
+        <div class="counter-box">
+            <strong id="minutes">0</strong>
+            <span>MINUTES</span>
+        </div>
+
+        <div class="counter-box">
+            <strong id="seconds">0</strong>
+            <span>SECONDS</span>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MEMORIES ================= -->
+
+<section id="memories">
+
+    <div class="section-title">
+        <small>OUR MEMORIES</small>
+        <h2>Little Pieces Of Forever</h2>
+    </div>
+
+    <div class="memories">
+
+        <!-- Replace the image URLs -->
+
+        <div class="memory"
+             style="--image:url('https://images.unsplash.com/photo-1516589178581-6cd7833ae3b2?auto=format&fit=crop&w=900&q=80')">
+
+            <div class="memory-text">
+                <h3>The Beginning</h3>
+                <p>Where our little story started.</p>
+            </div>
+
+        </div>
+
+
+        <div class="memory"
+             style="--image:url('https://images.unsplash.com/photo-1518199266791-5375a83190b7?auto=format&fit=crop&w=900&q=80')">
+
+            <div class="memory-text">
+                <h3>The Moments</h3>
+                <p>The ordinary days that became special.</p>
+            </div>
+
+        </div>
+
+
+        <div class="memory"
+             style="--image:url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=80')">
+
+            <div class="memory-text">
+                <h3>Our Universe</h3>
+                <p>A collection of moments worth remembering.</p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= TIMELINE ================= -->
+
+<section>
+
+    <div class="section-title">
+        <small>OUR JOURNEY</small>
+        <h2>Chapter By Chapter</h2>
+    </div>
+
+    <div class="timeline">
+
+        <div class="timeline-item">
+
+            <div class="timeline-card">
+                <small>CHAPTER 01</small>
+                <h3>The First Moment</h3>
+                <p>
+                    Write something special about the first time
+                    you met or the beginning of your relationship.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-card">
+                <small>CHAPTER 02</small>
+                <h3>The First Memory</h3>
+                <p>
+                    Add one of your favorite memories here.
+                    It could be a conversation, trip, joke or special day.
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="timeline-item">
+
+            <div class="timeline-card">
+                <small>CHAPTER 03</small>
+                <h3>Today</h3>
+                <p>
+                    Another chapter has been written.
+                    And there are still many more pages waiting.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= SECRET LETTER ================= -->
+
+<section>
+
+    <div class="section-title">
+        <small>A SECRET MESSAGE</small>
+        <h2>Open When You're Ready</h2>
+    </div>
+
+    <div class="letter-container">
+
+        <div class="envelope">
+
+            <div class="envelope-icon">✉</div>
+
+            <p style="color:#aaaec7;margin-bottom:25px;">
+                There is something hidden here for you.
+            </p>
+
+            <button class="reveal" onclick="openLetter()">
+                OPEN THE LETTER
+            </button>
+
+            <div class="letter" id="letter">
+
+                <p>
+                    Hey you,
+                </p>
+
+                <br>
+
+                <p>
+                    I wanted to create something a little different
+                    for this celebration — not just a message,
+                    but a tiny universe that belongs to our story.
+                </p>
+
+                <br>
+
+                <p>
+                    Thank you for all the little moments,
+                    the conversations, the laughter,
+                    and the memories that somehow became
+                    some of my favorite memories.
+                </p>
+
+                <br>
+
+                <p>
+                    Whatever comes next,
+                    I hope we continue collecting
+                    beautiful moments together.
+                </p>
+
+                <br>
+
+                <p>
+                    Happy relationship celebration. ✨
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FINAL ================= -->
+
+<section class="final">
+
+    <div class="final-content">
+
+        <div class="wings">
+            ♡
+        </div>
+
+        <h2>
+            Two Souls.
+            <br>
+            One Story.
+        </h2>
+
+        <p>
+            The stars may be countless,
+            but some connections are worth remembering.
+        </p>
+
+        <br>
+
+        <button class="start-btn" onclick="celebrate()">
+            MAKE A WISH ✦
+        </button>
+
+    </div>
+
+</section>
+
+
+<footer>
+    MADE WITH ✦ FOR OUR LITTLE UNIVERSE
+</footer>
+
+
+<script>
+
+/* =========================================
+   CHANGE YOUR RELATIONSHIP START DATE
+========================================= */
+
+const relationshipStart = new Date("2024-04-27T00:00:00");
+
+
+/* =========================================
+   LIVE RELATIONSHIP COUNTER
+========================================= */
+
+function updateCounter(){
+
+    const now = new Date();
+
+    let difference = now - relationshipStart;
+
+    if(difference < 0){
+        difference = 0;
+    }
+
+    const seconds = Math.floor(difference / 1000);
+
+    const days = Math.floor(seconds / 86400);
+
+    const hours = Math.floor((seconds % 86400) / 3600);
+
+    const minutes = Math.floor((seconds % 3600) / 60);
+
+    const secs = seconds % 60;
+
+    document.getElementById("days").textContent = days;
+    document.getElementById("hours").textContent =
+        String(hours).padStart(2,"0");
+
+    document.getElementById("minutes").textContent =
+        String(minutes).padStart(2,"0");
+
+    document.getElementById("seconds").textContent =
+        String(secs).padStart(2,"0");
+}
+
+setInterval(updateCounter,1000);
+
+updateCounter();
+
+
+/* =========================================
+   LOADING SCREEN
+========================================= */
+
+window.addEventListener("load",()=>{
+
+    setTimeout(()=>{
+
+        document.getElementById("loader")
+        .classList.add("hidden");
+
+    },1500);
+
+});
+
+
+/* =========================================
+   SECRET LETTER
+========================================= */
+
+function openLetter(){
+
+    const letter = document.getElementById("letter");
+
+    letter.classList.toggle("show");
+
+}
+
+
+/* =========================================
+   FLOATING STARS / PARTICLES
+========================================= */
+
+function createParticle(){
+
+    const particle = document.createElement("div");
+
+    particle.className = "particle";
+
+    particle.style.left =
+        Math.random()*100 + "vw";
+
+    particle.style.bottom =
+        "-10px";
+
+    particle.style.animationDuration =
+        (5 + Math.random()*8) + "s";
+
+    particle.style.opacity =
+        Math.random();
+
+    document.body.appendChild(particle);
+
+    setTimeout(()=>{
+        particle.remove();
+    },14000);
+}
+
+setInterval(createParticle,500);
+
+
+/* =========================================
+   CELEBRATION EFFECT
+========================================= */
+
+function celebrate(){
+
+    for(let i=0;i<80;i++){
+
+        setTimeout(()=>{
+
+            const particle =
+                document.createElement("div");
+
+            particle.className="particle";
+
+            particle.style.left =
+                (45 + Math.random()*10) + "vw";
+
+            particle.style.bottom =
+                (40 + Math.random()*10) + "vh";
+
+            particle.style.width =
+                (3 + Math.random()*6) + "px";
+
+            particle.style.height =
+                particle.style.width;
+
+            particle.style.animationDuration =
+                (2 + Math.random()*3) + "s";
+
+            document.body.appendChild(particle);
+
+            setTimeout(()=>{
+                particle.remove();
+            },5000);
+
+        },i*20);
+
+    }
+
+}
+
+
+/* =========================================
+   MOUSE PARALLAX MOON
+========================================= */
+
+document.addEventListener("mousemove",(e)=>{
+
+    const x =
+        (e.clientX / window.innerWidth - .5);
+
+    const y =
+        (e.clientY / window.innerHeight - .5);
+
+    const moon =
+        document.querySelector(".moon");
+
+    moon.style.transform =
+        `translate(${x*20}px,${y*20}px)`;
+
+});
+
+</script>
+
+</body>
+</html>
+```
